@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "server.js",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "new": "knex migrate:latest"
+  },
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
