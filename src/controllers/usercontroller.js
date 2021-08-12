@@ -32,9 +32,28 @@ module.exports = {
 
     async index(req, res){
         try {
-            const result = await connection('users')
-        } catch (error) {
+            const [result] = await connection('users').where('users.id', req.userId)
+            .select('users.name', 'users.email', 'imgprofile.imgurl')
+            .join('imgprofile', 'imgprofile.id', 'users.imgProfile_id')
+
+            result.imgurl = `http://192.168.0.106:3333/assets/profileimgs/${result.imgurl}`
             
+            res.status(200).send(result)
+        } catch (error) {
+            console.log(error)
+            res.status(401).send()
+        }
+    },
+
+    async updateimguserprofile(req, res){
+        const id_user = req.query.id_user
+        const id_img = req.query.id_img
+
+        try {
+             await connection('users').where('id', id_user).update('imgProfile_id', id_img)
+             res.status(200).send()
+        } catch (error) {
+            res.status(401).send()
         }
     }
 }

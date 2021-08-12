@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 
 module.exports = {
     async generationtoken(id){
-        return jwt.sign({id}, process.env.SECRET, {expiresIn: '1h'})
+        return jwt.sign({id}, process.env.SECRET, {expiresIn: '3h'})
     },
     
     async verifyToken (req, res, next){

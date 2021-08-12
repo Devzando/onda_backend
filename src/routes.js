@@ -8,6 +8,8 @@ const { verifyToken } = require('./helpers/jwt')
 
 router.post('/', UserController.create)
 router.post('/login', UserController.login)
+router.get('/listusers', verifyToken, UserController.index)
+router.put('/updateimgprofile', UserController.updateimguserprofile)
 router.get('/listdist', verifyToken, DistributionController.index)
 router.get('/listimgprofile', ImgProfileController.index)
 router.get('/listimgdist', ImgDistController.index)
