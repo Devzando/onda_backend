@@ -4,6 +4,7 @@ exports.up = function(knex){
         table.string('name').notNullable()
         table.string('email').notNullable()
         table.string('password').notNullable()
+        table.integer('imgProfile_id').unsigned().references('id').inTable('imgProfile')
     })
 }
 

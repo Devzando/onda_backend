@@ -28,5 +28,13 @@ module.exports = {
             res.status(401).send()
         }
         
+    },
+
+    async index(req, res){
+        try {
+            const result = await connection('users')
+        } catch (error) {
+            
+        }
     }
 }

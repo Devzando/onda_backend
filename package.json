@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon src/index.js",
-    "newtable": "knex migrate:latest"
+    "newtable": "knex migrate:latest",
+    "dropmigration": "knex migrate:rollbalck",
+    "newseed": "knex seed:run"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",

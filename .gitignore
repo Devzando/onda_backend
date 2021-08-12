@@ -1,3 +1,7 @@
 node_modules
 yarn.lock
 .env
+assets/distributionimgs/*
+assets/profileimgs/*
+!assets/distributionimgs/.gitkeep
+!assets/profileimgs/.gitkeep
