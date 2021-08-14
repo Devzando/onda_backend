@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon src/index.js",
     "newtable": "knex migrate:latest",
-    "dropmigration": "knex migrate:rollbalck",
+    "dropmigration": "knex migrate:rollback",
     "newseed": "knex seed:run"
   },
   "dependencies": {

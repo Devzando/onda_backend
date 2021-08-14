@@ -5,7 +5,7 @@ module.exports = {
         try {
             const result = await connection('imgDist').select()
             const newResult = result.map(item => {
-                return {Imgurl: `http://192.168.0.106:3333/assets/profileimgs/${item.imgurl}`, id: item.id}
+                return {Imgurl: `http://192.168.0.106:3333/assets/distributionimgs/${item.imgurl}`, id: item.id}
             })
 
             res.status(200).send(newResult)
