@@ -12,6 +12,7 @@ router.get('/listusers', verifyToken, UserController.index)
 router.put('/updateimgprofile', UserController.updateimguserprofile)
 router.post('/createdist', verifyToken, DistributionController.create)
 router.get('/listdistglobal', verifyToken, DistributionController.indexglobalhome)
+router.get('/listdistcreate', verifyToken, DistributionController.indexdistcreate)
 router.get('/listimgprofile', ImgProfileController.index)
 router.get('/listimgdist', ImgDistController.index)
 
