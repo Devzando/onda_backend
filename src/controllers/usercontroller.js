@@ -17,13 +17,14 @@ module.exports = {
 
     async login(req, res) {
         const {email, password} = req.body
-        const [results] = await connection('users').where('email', email).select('password', 'id')
+        const [results] = await connection('users').where('email', email).select('password', 'id', 'logged')
         if(results == undefined || null || '') res.status(401).send()
 
         const decodedhash = await decrypt(password, results.password)
+
         if(decodedhash) {
             const token = await generationtoken(results.id)
-            res.status(200).send({token, id: results.id})
+            res.status(200).send({token, id: results.id, logged: results.logged})
         }else{
             res.status(401).send()
         }
@@ -51,6 +52,17 @@ module.exports = {
 
         try {
              await connection('users').where('id', id_user).update('imgProfile_id', id_img)
+             res.status(200).send()
+        } catch (error) {
+            res.status(401).send()
+        }
+    },
+
+    async updatelogged(req, res){
+        const id_user = req.query.id_user
+
+        try {
+             await connection('users').where('id', id_user).update('logged', false)
              res.status(200).send()
         } catch (error) {
             res.status(401).send()
