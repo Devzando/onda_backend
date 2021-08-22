@@ -1,6 +1,7 @@
 const connection = require('../database/connection')
 const { encrypt, decrypt } = require('../helpers/cryptoghaphy')
 const { generationtoken } = require('../helpers/jwt')
+const fetch = require('node-fetch')
 
 module.exports = {
     async create(req, res) {
